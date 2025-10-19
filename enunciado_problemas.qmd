@@ -1,42 +1,52 @@
 ---
 title: "Problemas de Teoría de la Decisión bajo Incertidumbre"
 format: pdf
-editor: visual
+author: "Antonio Caballero Contreras"
 ---
 
+# Problema 1 
 
-# Problema 1: Elección de proveedor de café
+**Enunciado:**  
+Una empresa de productos tecnológicos está evaluando tres posibles estrategias de producción para el próximo trimestre:  
 
-Una empresa que fabrica cápsulas de café debe decidir entre tres posibles proveedores: **Aroma S.A.**, **Cafés del Sur** y **Tostadores Sevilla**.  
-El precio por kilo dependerá de la **cosecha anual** de café, que puede ser *buena*, *normal* o *mala*.
+- **d1:** Aumentar la producción actual.  
+- **d2:** Mantener el nivel actual.  
+- **d3:** Reducir temporalmente la producción.  
 
-| Proveedor             | Cosecha buena | Cosecha normal | Cosecha mala |
-|:---------------------:|:--------------:|:---------------:|:-------------:|
-| **d1:** Aroma S.A.    | 8 €/kg         | 9 €/kg          | 13 €/kg       |
-| **d2:** Cafés del Sur | 9 €/kg         | 8 €/kg          | 11 €/kg       |
-| **d3:** Tostadores Sevilla | 7 €/kg     | 10 €/kg         | 15 €/kg       |
+El beneficio (en miles de euros) dependerá de la demanda del mercad*, la cual puede ser **alta (e1)**, **media (e2)** o **baja (e3)**.  
 
-**Pregunta:**  
-Si la empresa no conoce las probabilidades de cada tipo de cosecha, ¿qué proveedor crees que debería elegir para minimizar el riesgo de pagar precios altos?  
+La siguiente tabla muestra las estimaciones de beneficios para cada estrategia y estado posible:
 
+|        | e1 (alta) | e2 (media) | e3 (baja) |
+|:------:|:----------:|:-----------:|:-----------:|
+| **d1** | 150        | 80          | -50         |
+| **d2** | 100        | 120         | 60          |
+| **d3** | 70         | 60          | 40          |
+
+Se pide:  
+1. Aplicar los **criterios de decisión bajo incertidumbre** por separado: **Maximax, Maximin, Laplace, Hurwicz (α=0.6)** y **Savage**, considerando los valores como **beneficios** (situación favorable).  
+2. Repetir el análisis considerando los valores como **costes** (situación desfavorable).  
+3. En cada caso, indicar **cuál es la decisión más recomendable** según cada criterio.  
 ---
 
-# Problema 2: Inversión en campañas publicitarias
+# Problema 2 — Situación real con función que aplica todos los métodos
 
-Una empresa de ropa deportiva puede invertir en **publicidad en redes sociales**, **en televisión local** o **no invertir**.  
-El beneficio (en miles de euros) depende de cómo responda el mercado: *fuerte*, *moderado* o *débil*.
+Una pequeña cadena de supermercados de Sevilla debe elegir entre tres posibles proveedores de energía para sus tiendas:  
 
-| Estrategia publicitaria        | Mercado fuerte | Mercado moderado | Mercado débil |
-|:------------------------------:|:---------------:|:----------------:|:--------------:|
-| **d1:** Redes sociales         | 100             | 60               | 10             |
-| **d2:** Televisión local       | 80              | 70               | 40             |
-| **d3:** No invertir            | 0               | 0                | 0              |
+- **d1:** SolarSur (energía solar).  
+- **d2:** EólicaAndalucía (energía eólica).  
+- **d3:** HidroPower (energía hidroeléctrica).  
 
-**Pregunta:**  
-¿Qué decisión parece más razonable si la empresa es **cauta** y quiere evitar grandes pérdidas?  
-¿Y cuál tomarías si la empresa fuera **optimista** respecto a la respuesta del mercado?
+El beneficio anual estimado (en miles de euros) depende del precio de la energía durante el año, que puede ser **bajo (e1)**, **medio (e2)** o **alto (e3)**.  
 
----
+La siguiente tabla muestra las estimaciones de beneficios para cada proveedor:
 
-**Conclusión:**  
-Estos dos problemas ilustran cómo, bajo incertidumbre, una misma situación puede conducir a decisiones distintas según la actitud del decisor frente al riesgo.
+| Proveedor           | e1 (bajo) | e2 (medio) | e3 (alto) |
+|:--------------------:|:----------:|:-----------:|:-----------:|
+| **SolarSur**         | 60         | 80          | 100         |
+| **EólicaAndalucía**  | 50         | 100         | 120         |
+| **HidroPower**       | 70         | 90          | 110         |
+
+Se pide:  
+1. Resolver el problema mediante una **función en R** que calcule todos los **criterios de decisión bajo incertidumbre** (Maximax, Maximin, Laplace, Hurwicz y Savage) y devuelva los resultados en una **única tabla resumen**.  
+2. Analizar los resultados obtenidos e indicar **cuál es el proveedor más recomendable**.  
