@@ -1,0 +1,42 @@
+---
+title: "Problemas de Teoría de la Decisión bajo Incertidumbre"
+format: pdf
+editor: visual
+---
+
+
+# Problema 1: Elección de proveedor de café
+
+Una empresa que fabrica cápsulas de café debe decidir entre tres posibles proveedores: **Aroma S.A.**, **Cafés del Sur** y **Tostadores Sevilla**.  
+El precio por kilo dependerá de la **cosecha anual** de café, que puede ser *buena*, *normal* o *mala*.
+
+| Proveedor             | Cosecha buena | Cosecha normal | Cosecha mala |
+|:---------------------:|:--------------:|:---------------:|:-------------:|
+| **d1:** Aroma S.A.    | 8 €/kg         | 9 €/kg          | 13 €/kg       |
+| **d2:** Cafés del Sur | 9 €/kg         | 8 €/kg          | 11 €/kg       |
+| **d3:** Tostadores Sevilla | 7 €/kg     | 10 €/kg         | 15 €/kg       |
+
+**Pregunta:**  
+Si la empresa no conoce las probabilidades de cada tipo de cosecha, ¿qué proveedor crees que debería elegir para minimizar el riesgo de pagar precios altos?  
+
+---
+
+# Problema 2: Inversión en campañas publicitarias
+
+Una empresa de ropa deportiva puede invertir en **publicidad en redes sociales**, **en televisión local** o **no invertir**.  
+El beneficio (en miles de euros) depende de cómo responda el mercado: *fuerte*, *moderado* o *débil*.
+
+| Estrategia publicitaria        | Mercado fuerte | Mercado moderado | Mercado débil |
+|:------------------------------:|:---------------:|:----------------:|:--------------:|
+| **d1:** Redes sociales         | 100             | 60               | 10             |
+| **d2:** Televisión local       | 80              | 70               | 40             |
+| **d3:** No invertir            | 0               | 0                | 0              |
+
+**Pregunta:**  
+¿Qué decisión parece más razonable si la empresa es **cauta** y quiere evitar grandes pérdidas?  
+¿Y cuál tomarías si la empresa fuera **optimista** respecto a la respuesta del mercado?
+
+---
+
+**Conclusión:**  
+Estos dos problemas ilustran cómo, bajo incertidumbre, una misma situación puede conducir a decisiones distintas según la actitud del decisor frente al riesgo.
