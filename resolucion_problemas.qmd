@@ -1,0 +1,44 @@
+---
+title: "Problemas de Teoría de la Decisión bajo Incertidumbre (con código)"
+format: pdf
+editor: visual
+---
+
+# Problema 1: Elección de proveedor de café
+
+Una empresa que fabrica cápsulas de café debe decidir entre tres posibles proveedores: **Aroma S.A.**, **Cafés del Sur** y **Tostadores Sevilla**.  
+El precio por kilo dependerá de la **cosecha anual** de café, que puede ser *buena*, *normal* o *mala*.
+
+| Proveedor             | Cosecha buena | Cosecha normal | Cosecha mala |
+|:---------------------:|:--------------:|:---------------:|:-------------:|
+| **d1:** Aroma S.A.    | 8 €/kg         | 9 €/kg          | 13 €/kg       |
+| **d2:** Cafés del Sur | 9 €/kg         | 8 €/kg          | 11 €/kg       |
+| **d3:** Tostadores Sevilla | 7 €/kg     | 10 €/kg         | 15 €/kg       |
+
+**Pregunta:**  
+Si la empresa no conoce las probabilidades de cada tipo de cosecha, ¿qué proveedor debería elegir para minimizar el riesgo de pagar precios altos?
+
+---
+
+## Código en R
+
+```{r}
+# Matriz de precios por proveedor (costes)
+proveedores <- matrix(c(8,9,13,
+                        9,8,11,
+                        7,10,15),
+                      nrow = 3, byrow = TRUE)
+
+colnames(proveedores) <- c("Cosecha buena", "Cosecha normal", "Cosecha mala")
+rownames(proveedores) <- c("Aroma S.A.", "Cafés del Sur", "Tostadores Sevilla")
+
+proveedores
+
+# Criterio de Laplace (probabilidades iguales)
+media_costes <- rowMeans(proveedores)
+media_costes
+
+# Decisión recomendada: proveedor con menor coste medio
+mejor_proveedor <- names(which.min(media_costes))
+cat("Según el criterio de Laplace, el mejor proveedor es:", mejor_proveedor)
+ 
