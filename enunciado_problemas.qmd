@@ -1,5 +1,5 @@
 ---
-title: "Problemas de Teoría de la Decisión bajo Incertidumbre"
+title: "Enunciado problemas de Teoría de la Decisión bajo Incertidumbre"
 format: pdf
 author: "Antonio Caballero Contreras"
 ---
@@ -29,7 +29,7 @@ Se pide:
 3. En cada caso, indicar **cuál es la decisión más recomendable** según cada criterio.  
 ---
 
-# Problema 2 — Situación real con función que aplica todos los métodos
+# Problema 2 
 
 Una pequeña cadena de supermercados de Sevilla debe elegir entre tres posibles proveedores de energía para sus tiendas:  
 
