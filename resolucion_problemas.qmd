@@ -1,15 +1,15 @@
 ---
-title: "Problemas de Teoría de la Decisión bajo Incertidumbre (con código)"
+title: "Problemas de Teoría de la Decisión bajo Incertidumbre"
 format: pdf
 editor: visual
 ---
 
 # Problema 1: Elección de proveedor de café
 
-Una empresa que fabrica cápsulas de café debe decidir entre tres posibles proveedores: **Aroma S.A.**, **Cafés del Sur** y **Tostadores Sevilla**.  
+Una empresa que fabrica cápsulas de café debe decidir entre tres posibles proveedores: **Aroma S.A.**, **Cafés del Sur** y **Tostadores Sevilla**.\
 El precio por kilo dependerá de la **cosecha anual**, que puede ser *buena*, *normal* o *mala*.
 
-**Pregunta:**  
+**Pregunta:**\
 Si la empresa no conoce las probabilidades de cada tipo de cosecha, ¿qué proveedor debería elegir para minimizar el riesgo de pagar precios altos?
 
 ```{r}
@@ -24,7 +24,8 @@ colnames(proveedores) <- c("Cosecha buena", "Cosecha normal", "Cosecha mala")
 rownames(proveedores) <- c("Aroma S.A.", "Cafés del Sur", "Tostadores Sevilla")
 
 # Mostrar tabla de precios
-knitr::kable(proveedores, caption = "Tabla de precios por proveedor (€/kg)")
+print("Tabla de precios por proveedor (€/kg):")
+print(proveedores)
 
 # Criterio de Laplace (promedio de costes)
 media_costes <- rowMeans(proveedores)
@@ -37,14 +38,13 @@ mejor_proveedor
 
 ```
 
-
 # Problema 2: Elección de proveedor de energía
 
-Una pequeña cadena de supermercados de Sevilla debe elegir entre tres proveedores de energía:  
+Una pequeña cadena de supermercados de Sevilla debe elegir entre tres proveedores de energía:
 
 - **SolarSur** (solar)  
 - **EólicaAndalucía** (eólica)  
-- **HidroPower** (hidroeléctrica)  
+- **HidroPower** (hidroeléctrica)
 
 El beneficio anual estimado (en miles de euros) depende del precio de la energía durante el año: **bajo (e1)**, **medio (e2)**, **alto (e3)**.
 
@@ -95,7 +95,10 @@ decision_incertidumbre <- function(tabla, alpha = 0.6) {
 
 # Aplicar la función
 resultado <- decision_incertidumbre(energia)
+
+# Mostrar tabla de resultados
 knitr::kable(resultado, caption = "Resultados de todos los criterios")
 
-**Conclusión:** La opción más recomendable según la mayoría de criterios es EólicaAndalucía.
+# Conclusión
+cat("**Conclusión:** La opción más recomendable según la mayoría de criterios es EólicaAndalucía.")
 
