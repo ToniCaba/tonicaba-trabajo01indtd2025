@@ -38,17 +38,67 @@ mejor_proveedor
 
 ```
 
-# 
 
 # Problema 2: Elección de proveedor de energía
 
 Una pequeña cadena de supermercados de Sevilla debe elegir entre tres proveedores de energía:
 
--   **SolarSur** (solar)
--   **EólicaAndalucía** (eólica)
+-   **SolarSur** (solar)\
+-   **EólicaAndalucía** (eólica)\
 -   **HidroPower** (hidroeléctrica)
 
 El beneficio anual estimado (en miles de euros) depende del precio de la energía durante el año: **bajo (e1)**, **medio (e2)**, **alto (e3)**.
+```{r}
+# Matriz de beneficios por proveedor (miles de euros)
+energia <- matrix(
+  c(60, 80, 100,
+    50, 100, 120,
+    70, 90, 110),
+  nrow = 3,
+  byrow = TRUE
+)
+colnames(energia) <- c("Bajo", "Medio", "Alto")
+rownames(energia) <- c("SolarSur", "EólicaAndalucía", "HidroPower")
 
-```{r} # Matriz de beneficios por proveedor (miles de euros) energia <- matrix(   c(60, 80, 100,     50, 100, 120,     70, 90, 110),   nrow = 3,   byrow = TRUE ) colnames(energia) <- c("Bajo", "Medio", "Alto") rownames(energia) <- c("SolarSur", "EólicaAndalucía", "HidroPower")  # Mostrar tabla knitr::kable(energia, caption = "Tabla de beneficios por proveedor (miles de euros)")  # Función para calcular todos los criterios de decisión decision_incertidumbre <- function(tabla, alpha = 0.6) {   # Maximax   maximax <- apply(tabla, 1, max)      # Maximin   maximin <- apply(tabla, 1, min)      # Laplace   laplace <- rowMeans(tabla)      # Hurwicz   hurwicz <- alpha * apply(tabla, 1, max) + (1 - alpha) * apply(tabla, 1, min)      # Savage   mejores <- apply(tabla, 2, max)   regret <- sweep(tabla, 2, mejores, "-")  # <- CORREGIDO   savage <- apply(regret, 1, max)      # Tabla de resultados   data.frame(     Decisión = rownames(tabla),     Maximax = maximax,     Maximin = maximin,     Laplace = laplace,     Hurwicz = hurwicz,     Savage = savage   ) }  # Aplicar la función resultado <- decision_incertidumbre(energia)  # Mostrar tabla de resultados knitr::kable(resultado, caption = "Resultados de todos los criterios")  # Conclusión print("**Conclusión:** La opción más recomendable según la mayoría de criterios es EólicaAndalucía.")}
+# Mostrar tabla
+knitr::kable(energia, caption = "Tabla de beneficios por proveedor (miles de euros)")
+
+# Función para calcular todos los criterios de decisión
+decision_incertidumbre <- function(tabla, alpha = 0.6) {
+  # Maximax
+  maximax <- apply(tabla, 1, max)
+  
+  # Maximin
+  maximin <- apply(tabla, 1, min)
+  
+  # Laplace
+  laplace <- rowMeans(tabla)
+  
+  # Hurwicz
+  hurwicz <- alpha * apply(tabla, 1, max) + (1 - alpha) * apply(tabla, 1, min)
+  
+  # Savage
+  mejores <- apply(tabla, 2, max)
+  regret <- sweep(tabla, 2, mejores, "-")  # <- CORREGIDO
+  savage <- apply(regret, 1, max)
+  
+  # Tabla de resultados
+  data.frame(
+    Decisión = rownames(tabla),
+    Maximax = maximax,
+    Maximin = maximin,
+    Laplace = laplace,
+    Hurwicz = hurwicz,
+    Savage = savage
+  )
+}
+
+# Aplicar la función
+resultado <- decision_incertidumbre(energia)
+
+# Mostrar tabla de resultados
+knitr::kable(resultado, caption = "Resultados de todos los criterios")
+
+# Conclusión
+print("Conclusión: La opción más recomendable según la mayoría de criterios es EólicaAndalucía.")
 ```
